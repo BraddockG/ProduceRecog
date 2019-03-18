@@ -1,8 +1,8 @@
-from PIL import Image
 import os
 import numpy as np
 from sklearn.model_selection import train_test_split
-
+from PIL import Image
+from sklearn.preprocessing import LabelEncoder
 
 class ImageConverter:
     def __init__(self, destination):
@@ -53,9 +53,16 @@ class ImageConverter:
                 image = Image.open(image_path)
                 image_data = np.asarray(image)
                 X[i] = image_data
+
+
                 y.append(os.path.basename(root))
 
                 i += 1
+
+        # encode class values as integers
+        encoder = LabelEncoder()
+        encoder.fit(y)
+        y = encoder.transform(y)
 
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 

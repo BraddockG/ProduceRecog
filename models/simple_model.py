@@ -10,7 +10,7 @@ class SimpleModel(BaseModel):
 
     def build_model(self):
         self.model = Sequential()
-        self.model.add(Dense(32, activation='relu', input_shape=(img_width, img_height)))
+        self.model.add(Dense(32, activation='relu', input_shape=(img_height, img_width)))
         self.model.add(Dense(16, activation='relu'))
         self.model.add(Flatten())
         self.model.add(Dense(1, activation='sigmoid'))

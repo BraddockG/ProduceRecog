@@ -109,3 +109,4 @@ venv.bak/
 *.uk
 *.hdf5
 *.uk
+.idea/workspace.xml

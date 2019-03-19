@@ -2,6 +2,7 @@ from base.base_trainer import BaseTrain
 from keras.callbacks import ModelCheckpoint, TensorBoard
 import os
 
+
 class SimpleModelTrainer(BaseTrain):
     def __init__(self, model, data, config):
         super(SimpleModelTrainer, self).__init__(model, data, config)

@@ -104,3 +104,8 @@ venv.bak/
 .mypy_cache/
 *DS_Store
 *.png
+*.local
+*.hdf5
+*.uk
+*.hdf5
+*.uk

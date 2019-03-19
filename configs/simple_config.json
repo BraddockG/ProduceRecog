@@ -3,13 +3,13 @@
     "name": "simple_produce_recog"
   },
   "model":{
-    "learning_rate": 0.001,
+    "learning_rate": 0.01,
     "optimizer": "adam"
   },
   "trainer":{
-    "num_epochs": 20,
-    "batch_size": 64,
-    "validation_split":0.25,
+    "num_epochs": 52,
+    "batch_size": 4,
+    "validation_split":0.20,
     "verbose_training": true
   },
   "callbacks":{

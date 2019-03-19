@@ -1,5 +1,6 @@
 from data_loader.simple_image_loader import SimpleImageLoader
 from models.simple_model import SimpleModel
+from models.tutorial_model import TutorialModel
 from trainers.simple_trainer import SimpleModelTrainer
 from utils.config import process_config
 from utils.dirs import create_dirs
@@ -18,7 +19,7 @@ def main():
     model = SimpleModel(config)
 
     print('Create the trainer')
-    trainer = SimpleModelTrainer(model.model, data_loader.get_train_data(),config)
+    trainer = SimpleModelTrainer(model.model, data_loader.get_train_data(), config)
 
     print('Start training the model.')
     trainer.train()

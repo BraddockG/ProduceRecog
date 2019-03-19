@@ -3,6 +3,7 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from PIL import Image
 from sklearn.preprocessing import LabelEncoder
+import matplotlib.pyplot as plt
 
 class ImageConverter:
     def __init__(self, destination):
@@ -10,7 +11,7 @@ class ImageConverter:
 
     def format_images(self, source):
         image_number = 0
-        size = 30, 40
+        size = 60, 80
 
         for root, directories, filenames in os.walk(source):
             for filename in filenames:
@@ -38,7 +39,7 @@ class ImageConverter:
         num_of_images = sum([len(files) for r, d, files in os.walk(self.destination)
                              if not files.__contains__(".DS_Store")])
 
-        X = np.ndarray(shape=(num_of_images, 40, 30), dtype=np.int)
+        X = np.ndarray(shape=(num_of_images, 80, 60), dtype=np.int)
         y = []
 
         i = 0
@@ -64,6 +65,6 @@ class ImageConverter:
         encoder.fit(y)
         y = encoder.transform(y)
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
-
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
+        
         return (X_train, y_train), (X_test, y_test)

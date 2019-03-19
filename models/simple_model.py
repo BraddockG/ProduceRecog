@@ -1,6 +1,6 @@
 from base.base_model import BaseModel
 from keras.models import Sequential
-from keras.layers import Input, Dense
+from keras.layers import Input, Dense, Flatten
 
 
 class SimpleModel(BaseModel):
@@ -10,12 +10,13 @@ class SimpleModel(BaseModel):
 
     def build_model(self):
         self.model = Sequential()
-        self.model.add(Dense(32, activation='relu', input_shape=(40 * 30,)))
+        self.model.add(Dense(32, activation='relu', input_shape=(60, 80)))
         self.model.add(Dense(16, activation='relu'))
-        self.model.add(Dense(10, activation='softmax'))
+        self.model.add(Flatten())
+        self.model.add(Dense(1, activation='softmax'))
 
         self.model.compile(
-            loss='sparse_categorical_crossentropy',
+            loss='binary_crossentropy',
             optimizer=self.config.model.optimizer,
             metrics=['acc'],
         )

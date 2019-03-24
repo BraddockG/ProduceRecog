@@ -57,7 +57,6 @@ class ImageConverter:
                 image_data = np.asarray(image)
                 X[i] = image_data
 
-
                 y.append(os.path.basename(root))
 
                 i += 1
@@ -67,7 +66,7 @@ class ImageConverter:
         encoder.fit(y)
         y = encoder.transform(y)
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.1)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
 
         X_train = tf.keras.utils.normalize(X_train, axis=1)
         X_test = tf.keras.utils.normalize(X_train, axis=1)

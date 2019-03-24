@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 from data_loader.simple_image_loader import SimpleImageLoader
 from models.simple_model import SimpleModel
 from models.tutorial_model import TutorialModel

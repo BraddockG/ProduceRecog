@@ -1,3 +1,4 @@
+from comet_ml import Experiment
 from base.base_trainer import BaseTrain
 from keras.callbacks import ModelCheckpoint, TensorBoard
 import os
@@ -31,6 +32,13 @@ class SimpleModelTrainer(BaseTrain):
                 write_graph=self.config.callbacks.tensorboard_write_graph,
             )
         )
+
+        experiment = Experiment(api_key=self.config.exp.comet_api_key,
+                                project_name=self.config.exp.name,
+                                workspace=self.config.exp.workspace)
+        experiment.disable_mp()
+        experiment.log_multiple_params(self.config)
+        self.callbacks.append(experiment.get_keras_callback())
 
     def train(self):
         history = self.model.fit(

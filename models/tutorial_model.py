@@ -19,9 +19,9 @@ class TutorialModel(BaseModel):
         self.model.add(Flatten())
         self.model.add(Dense(128, activation='relu'))
         self.model.add(Dropout(0.5))
-        self.model.add(Dense(1, activation='softmax'))
+        self.model.add(Dense(6, activation='softmax'))
         self.model.compile(
-            loss='binary_crossentropy',
+            loss='sparse_categorical_crossentropy',
             optimizer=self.config.model.optimizer,
             metrics=['acc'],
         )

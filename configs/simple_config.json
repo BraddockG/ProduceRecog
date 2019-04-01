@@ -9,9 +9,9 @@
     "optimizer": "adam"
   },
   "trainer":{
-    "num_epochs": 1000,
+    "num_epochs": 500,
     "batch_size": 32,
-    "validation_split": 0.30,
+    "validation_split": 0.20,
     "verbose_training": true
   },
   "callbacks":{

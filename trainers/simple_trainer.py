@@ -48,6 +48,7 @@ class SimpleModelTrainer(BaseTrain):
             batch_size=self.config.trainer.batch_size,
             validation_split=self.config.trainer.validation_split,
             callbacks=self.callbacks,
+            shuffle=True
         )
         self.loss.extend(history.history['loss'])
         self.acc.extend(history.history['acc'])

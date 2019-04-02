@@ -30,7 +30,7 @@ class ImageConverter:
                 image_path = os.path.join(root, filename)
                 image = Image.open(image_path)
                 image.thumbnail(size, Image.ANTIALIAS)
-                image = image.convert('L')
+                image = image.convert('RGB')
                 image_file_name = str(image_number) + '.png'
                 image.save(os.path.join(target_directory, image_file_name))
 
@@ -41,7 +41,10 @@ class ImageConverter:
         num_of_images = sum([len(files) for r, d, files in os.walk(self.destination)
                              if not files.__contains__(".DS_Store")])
 
-        X = np.ndarray(shape=(num_of_images, img_height, img_width), dtype=np.int)
+        # One for each RGB channel
+        NUMBER_OF_CHANNELS = 3
+
+        X = np.ndarray(shape=(num_of_images, img_height, img_width, NUMBER_OF_CHANNELS), dtype=np.int)
         y = []
 
         i = 0
@@ -66,7 +69,7 @@ class ImageConverter:
         encoder.fit(y)
         y = encoder.transform(y)
 
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.0)
 
         X_train = tf.keras.utils.normalize(X_train, axis=1)
         X_test = tf.keras.utils.normalize(X_train, axis=1)

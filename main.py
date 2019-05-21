@@ -17,7 +17,7 @@ def main():
     data_loader = SimpleImageLoader(config)
 
     print('Create the model.')
-    model = SimpleModel(config)
+    model = TutorialModel(config)
 
     print('Create the trainer')
     trainer = SimpleModelTrainer(model.model, data_loader.get_train_data(), config)

@@ -11,7 +11,7 @@ class TutorialModel(BaseModel):
 
     def build_model(self):
         self.model = Sequential()
-        self.model.add(Convolution2D(32, (3, 3), activation='relu', input_shape=(1, 60, 80), data_format='channels_first'))
+        self.model.add(Convolution2D(32, (3, 3), activation='relu', input_shape=(80, 60, 3), data_format='channels_first'))
         self.model.add(Convolution2D(32, 3, 3, activation='relu'))
         self.model.add(MaxPooling2D(pool_size=(2, 2)))
         self.model.add(Dropout(0.25))
